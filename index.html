@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance Calculator</title>
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Attendance Calculator</h1>
+
+    <form method="POST">
+
+        <input
+            type="number"
+            name="attended"
+            placeholder="Classes Attended"
+            required>
+
+        <input
+            type="number"
+            name="total"
+            placeholder="Total Classes"
+            required>
+
+        <button type="submit">
+            Calculate
+        </button>
+
+    </form>
+
+    {% if percentage is not none %}
+
+    <div class="result">
+
+        <h2>{{ percentage }}%</h2>
+
+        {% if can_miss is not none %}
+        <p>
+            You can miss
+            <strong>{{ can_miss }}</strong>
+            more classes and still stay above 75%.
+        </p>
+        {% else %}
+        <p>Your attendance is below 75%.</p>
+        {% endif %}
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
